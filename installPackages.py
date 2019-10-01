@@ -13,7 +13,7 @@ def install():
 ###################################################################################################
     if pipInstalled and packageInstalled: #If both pip and PIL are installed
         print("Pip and all packages are installed.\nNo installations are required.")
-        sys.exit()
+        return
  ###################################################################################################   
     if not pipInstalled: #If pip is not installed
         print("Pip was not found on the system.")
@@ -26,14 +26,14 @@ def install():
             if not pipSuccess:
                 print("Error occurred when installing pip")
                 if input("Would you like to try to continue anyways?[y/n] ").lower() in ["y", "yes"]:
-                    sys.exit()
+                    return
 
             else:
                 print("Pip was installed successfully!")
         
         else:
             print("Package installation cannot continue without pip.\nExiting...")
-            sys.exit()
+            return
 ###################################################################################################    
     if not packageInstalled:
         print("Package PIL was not found on the system.")
@@ -52,7 +52,7 @@ def install():
         
         else:
             print("Exiting...")
-            sys.exit()
+            return
     
     print("Everything was installed successfully!")
 ###################################################################################################
