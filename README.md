@@ -25,9 +25,9 @@ that no imports apart from the installation can be done prior to calling the pro
 
 For example:
 
-from lib.install_Functions import install
-install()
-import [Insert Library Here]
+from lib.install_Functions import install\n
+install()\n
+import [Insert Library Here]\n
 ...Program
 
 Thank you for using this python package installer.
