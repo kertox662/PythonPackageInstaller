@@ -5,9 +5,11 @@ locally for ease of inclusion for the tool.
 
 HOW TO USE
 1. When including in a project, provide the lib folder on the top level of the
-project. This ensures that the functions can reach each other. Additionally,
-make sure to have a resources folder for the pip script and the list of target
-packages.
+project. Inlcude all files in the repository lib folder in the project folder.
+This ensures that the functions can reach each other. Additionally, make sure 
+to have a resources folder for the pip script and the list of target packages.
+This can be done easily by simply copying both folders from the repository to 
+the project.
 
 2. Packages can be specified in two ways:
     - Modifying the list named "targetPackages" in install_Functions.py under lib
