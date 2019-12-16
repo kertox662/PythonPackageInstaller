@@ -24,12 +24,10 @@ being installed to occur after running the install() procedure. What this means 
 that no imports apart from the installation can be done prior to calling the procedure.
 
 For example:
+
 from lib.install_Functions import install
-
 install()
-
 import [Insert Library Here]
-
 ...Program
 
 Thank you for using this python package installer.
