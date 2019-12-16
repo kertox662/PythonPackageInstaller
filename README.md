@@ -14,6 +14,16 @@ packages.
     - Modifying the targetPackages.txt in resources
     - Note that the list in the script takes priority over the file. If it is not
     empty, it will take the packages from there rather than the file.
+    - Some packages are not named the same as a module as it is on PyPi. PyPi is 
+    the database that pip uses to install the packages. When adding the pair of
+    values to the file or the list, make sure to add it in the form:
+    "moduleName","PyPiName"
+    To find the PyPi name, search for the package online and choose which version
+    of the module you would like the installer to get.
+    - It is possible for the installer to get extra command line arguments for the
+    pip install call. The only argument that is present by default is --user. To
+    specify an extra argument, add the argument to the end of the PyPiName wherever
+    it is used. Make sure there is a space between the package name and the arguments.
 
 3. Import install_packages.py and run the install() procedure. This will run the
 process to ask the user to install each package.
