@@ -18,14 +18,14 @@ def install():
         checkPackage(pkg)
     if len(packagesMissing) == 0:
         print("Nothing to do. Exiting...")
-        sys.exit()
+        return
 ###################################################################################################
     query = input("Show full output log? [y/n] ")
     doFullLog = True if query.lower() in ["y", 'yes'] else False
 ###################################################################################################
     if pipInstalled and len(packagesMissing) == 0: #If both pip and PIL are installed
         print("Pip and all packages are installed.\nNo installations are required.")
-        sys.exit()
+        return
  ###################################################################################################   
     if not pipInstalled: #If pip is not installed
         print("Pip was not found on the system.")
@@ -38,14 +38,14 @@ def install():
             if not pipSuccess:
                 print("Error occurred when installing pip")
                 if not input("Would you like to try to continue anyways?[y/n] ").lower() in ["y", "yes"]:
-                    sys.exit()
+                    return
 
             else:
                 print("Pip was installed successfully!")
         
         else:
             print("Package installation cannot continue without pip.\nExiting...")
-            sys.exit()
+            return
 ###################################################################################################    
     for pkg in packagesMissing:
         print("Package {} was not found on the system.".format(pkg[0]))
@@ -58,7 +58,7 @@ def install():
             if not pkgSuccess:
                 print("Error occurred when installing {}".format(pkg[0]))
                 if not input("Would you like to try to continue anyways?[y/n] ").lower() in ["y", "yes"]:
-                    sys.exit()
+                    return
             else:
                 print("{} was installed successfully!".format(pkg[0]))
     
