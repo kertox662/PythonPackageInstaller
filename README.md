@@ -33,6 +33,7 @@ as the starter file, this can be done by doing:
     - import lib.install_packages.
     
 Another option is to just import the install function. To do this, do:
+
     - from lib.install_packages import install
 
 To see an example, look at the install.py file.
