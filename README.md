@@ -30,7 +30,7 @@ the project.
 3. Import install_packages.py and run the install() procedure. This will run the
 process to ask the user to install each package. If the lib folder is in the same folder
 as the starter file, this can be done by doing:
-    
+
     import lib.install_packages.
     
 Another option is to just import the install function. To do this, do:
