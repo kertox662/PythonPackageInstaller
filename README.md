@@ -28,7 +28,15 @@ the project.
     it is used. Make sure there is a space between the package name and the arguments.
 
 3. Import install_packages.py and run the install() procedure. This will run the
-process to ask the user to install each package.
+process to ask the user to install each package. If the lib folder is in the same folder
+as the starter file, this can be done by doing:
+    import lib.install_packages
+    
+Another option is to just import the install function. To do this, do:
+    from lib.install_packages import install
+
+To see an example, look at the install.py file.
+
 
 4. Please take note that to have the packages be available on the same run as when
 the packages are installed, it is necessary for all import of the packages that are
