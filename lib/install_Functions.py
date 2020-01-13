@@ -49,7 +49,7 @@ def installPip(printOut = False):
 
     noError = True #Assumes no errors have occurred
     for line in process.stderr:
-        if line.lower().startswith("deprecation"):
+        if line.lower().startswith(b"deprecation"):
             break
         print("Err: {}".format(line.decode()), end = '')
         noError = False #If there are any items from stderr, then an error has occurred
@@ -81,7 +81,7 @@ def installPackage(pkg, printOut = False):
 
     noError = True #Assumes no errors have occurred
     for line in process.stderr:
-        if line.lower().startswith("deprecation"):
+        if line.lower().startswith(b"deprecation"):
             break
         print("Err: {}".format(line.decode()), end = '')
         noError = False #If there are any items from stderr, then an error has occurred
