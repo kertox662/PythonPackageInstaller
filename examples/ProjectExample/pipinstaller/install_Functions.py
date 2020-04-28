@@ -1,3 +1,9 @@
+"""The Python Package Installer"""
+"""
+Copyright 2020 Misha Melnyk
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+"""
 import subprocess
 import sys
 
@@ -49,7 +55,7 @@ def installPip(printOut = False):
 
     noError = True #Assumes no errors have occurred
     for line in process.stderr:
-        if line.lower().startswith("deprecation"):
+        if line.lower().startswith(b"deprecation"):
             break
         print("Err: {}".format(line.decode()), end = '')
         noError = False #If there are any items from stderr, then an error has occurred
@@ -81,7 +87,7 @@ def installPackage(pkg, printOut = False):
 
     noError = True #Assumes no errors have occurred
     for line in process.stderr:
-        if line.lower().startswith("deprecation"):
+        if line.lower().startswith(b"deprecation"):
             break
         print("Err: {}".format(line.decode()), end = '')
         noError = False #If there are any items from stderr, then an error has occurred
