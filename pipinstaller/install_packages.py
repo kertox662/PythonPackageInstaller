@@ -30,6 +30,7 @@ def install():
 ###################################################################################################
     query = input("Show full output log? [y/n] ")
     doFullLog = True if query.lower() in ["y", 'yes'] else False
+    print(query)
 ###################################################################################################
     if pipInstalled and len(packagesMissing) == 0: #If both pip and PIL are installed
         print("Pip and all packages are installed.\nNo installations are required.")
