@@ -5,6 +5,7 @@
 [![Github all releases](https://img.shields.io/github/downloads/kertox662/PythonPackageInstaller/total.svg)](https://GitHub.com/kertox662/PythonPackageInstaller/releases/)
 [![GitHub contributors](https://img.shields.io/github/contributors/kertox662/PythonPackageInstaller.svg)](https://GitHub.com/kertox662/PythonPackageInstaller/graphs/contributors/)
 [![GitHub stars](https://img.shields.io/github/stars/kertox662/PythonPackageInstaller.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/kertox662/PythonPackageInstaller/stargazers/)
+![Workflow Status](https://github.com/kertox662/PythonPackageInstaller/workflows/Test-Package/badge.svg)
 <br/>
 This script allows for easy installation of a batch of package dependencies
 given a file or modifying the script. This tool uses pip, which is included
