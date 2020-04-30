@@ -1,9 +1,10 @@
+name: Test-Package
 on: push
 jobs:
-  TestInstall:
+  TestInstallUnix:
     strategy:
       matrix:
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        platform: [ubuntu-latest, macos-latest]
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -13,3 +14,13 @@ jobs:
         run: "python3 install.py -y"
       - name: Test-Install
         run: "python3 install.py"
+  
+  TestInstallWindows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+      - name: Test
+        run: "py -3 install.py -y"
+      - name: Test-Install
+        run: "py -3 install.py"

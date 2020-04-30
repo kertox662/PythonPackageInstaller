@@ -15,7 +15,6 @@ resPath = pathlib.Path("pipinstaller/resources")
 #Function to check pip install
 #######################################
 def checkPip():
-    print(resPath)
     cmd = "pip"
     process = subprocess.Popen(cmd,
                                shell=True,
