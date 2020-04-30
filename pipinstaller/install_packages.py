@@ -1,4 +1,11 @@
-from lib.install_Functions import checkPip, installPip, checkPackage, installPackage, packagesMissing
+"""The Python Package Installer"""
+"""
+Copyright 2020 Misha Melnyk, Luke Zhang
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+"""
+
+from pipinstaller.install_Functions import checkPip, installPip, checkPackage, installPackage, packagesMissing
 import sys
 
 targetPackages = [
@@ -10,7 +17,7 @@ def install():
     global targetPackages
     pipInstalled = checkPip()
     if len(targetPackages) == 0:
-        with open("resources/targetPackages.txt") as fin:
+        with open("pipinstaller/resources/targetPackages.txt") as fin:
             targetPackages = fin.read().splitlines()
             for i in range(len(targetPackages)):
                 targetPackages[i] = targetPackages[i].split(',')

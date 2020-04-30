@@ -1,4 +1,4 @@
-from lib.install_packages import install
+from pipinstaller import install
 install()
 
 from PIL import Image

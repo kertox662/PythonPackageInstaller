@@ -1,23 +1,26 @@
+"""The Python Package Installer"""
+"""
+Copyright 2020 Misha Melnyk, Luke Zhang
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+"""
 import subprocess
 import sys
-import pathlib
 
 packagesMissing = []
-
-resourcesPath = pathlib.Path("resources")
 
 #######################################
 #Function to check pip install
 #######################################
 def checkPip():
-    cmd = "py -3 pip" if sys.platform == 'win32' else "python3 pip" #This command will normally give options for 
+    cmd = "py -3 -m pip" if sys.platform == 'win32' else "python3 -m pip" #This command will normally give options for 
                                   #arguments for the pip command but will output to stderr if the command is not found
     process = subprocess.Popen(cmd,
                                shell=True,
                                stdout=subprocess.PIPE,
                                stderr=subprocess.PIPE)
 
-    for _ in process.stderr:
+    for line in process.stderr:
         return False
     return True #Returns if whether it is installed or not
 
@@ -26,7 +29,7 @@ def checkPip():
 #######################################
 def checkPackage(pkg):
     try:
-        _ = __import__(pkg[0])
+        s = __import__(pkg[0])
     except ImportError: #If the PIL package is not installed, this import will raise an ImportError
         packagesMissing.append(pkg)
         return False
@@ -37,9 +40,7 @@ def checkPackage(pkg):
 #Function to install pip
 #######################################
 def installPip(printOut = False):
-    pipPath = resourcesPath / "get-pip.py"
-    print(pipPath)
-    cmd = f"py -3 {pipPath} --user" if sys.platform == "win32" else f"python3 {pipPath} --user"
+    cmd = "py -3 pipinstaller\resources\get-pip.py --user" if sys.platform == 'win32' else "python3 pipinstaller/resources/get-pip.py --user" 
     #Runs the python script in resources and installs pip locally for the user
     process = subprocess.Popen(cmd,
                                shell=True,
@@ -68,7 +69,7 @@ def installPip(printOut = False):
 #Function to install Package
 #######################################
 def installPackage(pkg, printOut = False):
-    cmd = f"pip install {pkg[1]} --user"
+    cmd = "py -3 -m pip install {} --user".format(pkg[1]) if sys.platform == 'win32' else "python3 -m pip install {} --user".format(pkg[1])
     #Runs the pip command to install the Pillow (PIL) package from online
     # cmd = "py -3 -m pip install resources\Pillow-4.3.0-cp33-cp33m-win32.whl --user" if sys.platform == 'win32' else "python3 -m pip install Pillow" 
     #Runs the pip command for the wheel file in resources

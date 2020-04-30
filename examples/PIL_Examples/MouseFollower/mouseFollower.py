@@ -18,7 +18,7 @@ imgTk = ImageTk.PhotoImage(img)
 
 def updateAngle(x, y):
     global angle
-    dy = y - h/2 #Consideres the origin to be the middle of the screen and not (0,0) by offsetting
+    dy = y - h/2 #considers the origin to be the middle of the screen and not (0,0) by offsetting
     dx = x - w/2
     angle = atan2(dy, dx) #atan2 takes in coords and returns an angle
 
