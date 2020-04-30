@@ -10,8 +10,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
       - name: Test
-        run: 'echo "y
-        y
-        " | python3 install.py'
+        run: "python3 install.py -y"
       - name: Test-Install
         run: "python3 install.py"
