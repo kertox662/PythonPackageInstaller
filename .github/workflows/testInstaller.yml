@@ -1,0 +1,15 @@
+on: push
+jobs:
+  TestInstall:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+      - name: Test
+        run: 'echo "y\ny\ny\n" | python3 install.py'
+      - name: Test-Install
+        run: "python3 install.py"
