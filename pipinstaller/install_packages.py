@@ -16,6 +16,7 @@ targetPackages = [
 def install():
     global targetPackages
     pipInstalled = checkPip()
+    print(f"Pip Installed{pipInstalled}")
     if len(targetPackages) == 0:
         with open("pipinstaller/resources/targetPackages.txt") as fin:
             targetPackages = fin.read().splitlines()
