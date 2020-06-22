@@ -18,14 +18,14 @@ targetPackages = [
 ]
 
 
-def install(pathToRequirements="pipinstaller/resources"):
+def install(pathToRequirements="pipinstaller/resources", auto=False):
     """Installs the specified packages\n
     Leave this blank if you are using targetPackages, or if your requirements.txt matches this path
     """
     global targetPackages
 
     acceptAll = (
-        "-y" in sys.argv
+        "-y" in sys.argv or auto
     )  # Checks if the -y parameter is passed in. Will ignore [y/n] queries if it is
 
     pipInstalled = checkPip()

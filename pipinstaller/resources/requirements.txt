@@ -1,0 +1,4 @@
+# Requirements.txt file can be used to specify dependencies.
+# If you prefer not to use it, you can use targetPackages.txt
+Pillow>=7.0.0<8.0.0
+canvasplus>=1.4.0<2.0.0 # Learn more about canvasplus https://pypi.org/project/canvasplus/

@@ -1,8 +1,6 @@
 """The Python Package Installer"""
 """
-Copyright 2020 Misha Melnyk
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Copyright 2020 Misha Melnyk, Luke Zhang | MIT License
 """
 
-from pypackageinstaller.install_packages import install
+from pipinstaller.install_packages import install

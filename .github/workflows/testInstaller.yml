@@ -1,5 +1,12 @@
 name: Test-Package
-on: push
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  release:
+    types: [created]
+    
 jobs:
   TestInstallUnix:
     strategy:
@@ -10,17 +17,33 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
+        with:
+          python-version: 3.5
+      - name: Test-requirements
+        run: python3 test.py -y
+      - name: Test-Install-requirements
+        run: python3 test.py
+
+      - name: Remove-requirements
+        run: rm -rf pipinstaller/resources/requirements.txt
       - name: Test
-        run: "python3 install.py -y"
+        run: python3 test.py -y
       - name: Test-Install
-        run: "python3 install.py"
+        run: python3 test.py
   
   TestInstallWindows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
+      - name: Test-requirements
+        run: py -3 test.py -y
+      - name: Test-Install-requirements
+        run: py -3 test.py
+
+      - name: Remove-requirements
+        run: Remove-Item pipinstaller/resources/requirements.txt
       - name: Test
-        run: "py -3 install.py -y"
+        run: py -3 test.py -y
       - name: Test-Install
-        run: "py -3 install.py"
+        run: py -3 test.py
