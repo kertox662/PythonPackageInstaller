@@ -9,13 +9,13 @@ import pathlib
 
 packagesMissing = []
 resPath = pathlib.Path("pipinstaller/resources")
+platformCmd = "py -3" if sys.platform == "win32" else "python3"
 
 
 def checkPip() -> bool:
     """Function to check pip install"""
-    cmd = (
-        "py -3 -m pip" if sys.platform == "win32" else "python3 -m pip"
-    )  # This command will normally give options for
+    cmd = "{} -m pip".format(platformCmd)  
+    # This command will normally give options for
     # Arguments for the pip command but will output to stderr if the command is not found
     process = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
@@ -47,12 +47,7 @@ def installPip(printOut=False):
     returns boolean annotating if an error was raised or not
     """
     pipPath = resPath / "get-pip.py"
-
-    cmd = (
-        "py -3 {} --user".format(pipPath)
-        if sys.platform == "win32"
-        else "python3 {} --user".format(pipPath)
-    )
+    cmd = "{} {} --user".format(platformCmd, pipPath)
     # Runs the python script in resources and installs pip locally for the user
     process = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
@@ -84,11 +79,7 @@ def installPackage(pkg, printOut=False):
     pkg - package to be installed\n
     returns boolean annotating if an error was raised or not
     """
-    cmd = (
-        "py -3 -m pip install {} --user".format(pkg[1])
-        if sys.platform == "win32"
-        else "python3 -m pip install {} --user".format(pkg[1])
-    )
+    cmd = "{} -m pip install {} --user".format(platformCmd, pkg[1])
     # Runs the pip command to install the Pillow (PIL) package from online
     # cmd = "py -3 -m pip install resources\Pillow-4.3.0-cp33-cp33m-win32.whl --user" if sys.platform == 'win32' else "python3 -m pip install Pillow"
     # Runs the pip command for the wheel file in resources
@@ -126,12 +117,7 @@ def installRequirements(path="pipinstaller/resources", printOut=False):
     returns boolean annotating if an error was raised or not
     """
     requirementsPath = pathlib.Path(path) / "requirements.txt"
-
-    cmd = (
-        "py -3 -m pip install -r {} --user".format(requirementsPath)
-        if sys.platform == "win32"
-        else "python3 -m pip install -r {} --user".format(requirementsPath)
-    )
+    cmd = "{} -m pip install -r {} --user".format(platformCmd, requirementsPath)
 
     # Runs the pip install -r requirements.txt
     process = subprocess.Popen(

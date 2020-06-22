@@ -11,9 +11,9 @@ jobs:
   TestInstallUnix:
     strategy:
       matrix:
-        platform: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
 
-    runs-on: ${{ matrix.platform }}
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
